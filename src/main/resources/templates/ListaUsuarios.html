@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+<strong th:if="${mensaje}">[[${mensaje}]]</strong>
+<h1>Lista Usuarios</h1>
+<a th:href="@{/nuevo}">Registrar un usuario</a>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Tipo Documento</th>
+        <th>Numero de Documento</th>
+        <th>Fecha de nacimiento</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+        <th>Estado</th>
+        <th>Rol</th>
+        <th colspan="2"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr th:each="user : ${listaUser}">
+            <td>[[${user.nombUsua}]]</td>
+            <td>[[${user.apelUsua}]]</td>
+            <td>[[${user.tipoDoc}]]</td>
+            <td>[[${user.numbDocUsua}]]</td>
+            <td>[[${user.fechNaci}]]</td>
+            <td>[[${user.corrUsua}]]</td>
+            <td>[[${user.contraUsua}]]</td>
+            <td>
+                <span th:if="${user.estaUsua == true}">Activo</span>
+                <span th:if="${user.estaUsua == false}">Inhanctivo</span>
+            </td>
+            <td>[[${user.rol.tipoRol}]]</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
