@@ -17,7 +17,6 @@
         <th>Numero de Documento</th>
         <th>Fecha de nacimiento</th>
         <th>Correo</th>
-        <th>Contraseña</th>
         <th>Estado</th>
         <th>Rol</th>
         <th colspan="2"></th>
@@ -32,7 +31,6 @@
             <td>[[${user.numbDocUsua}]]</td>
             <td>[[${user.fechNaci}]]</td>
             <td>[[${user.corrUsua}]]</td>
-            <td>[[${user.contraUsua}]]</td>
             <td>
                 <span th:if="${user.estaUsua == true}">Activo</span>
                 <span th:if="${user.estaUsua == false}">Inhanctivo</span>
