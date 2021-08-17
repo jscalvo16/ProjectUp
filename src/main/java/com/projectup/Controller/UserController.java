@@ -37,17 +37,15 @@ public class UserController {
         System.out.println("Estas en el registro de usuarios");
         List<Rol> listaRol = rolService.listaRol();
         model.addAttribute("listRol",listaRol);
-        model.addAttribute("titulo", "Registrar usuarios");
-
         return "register";
     }
 
-    // Método gregar un nuevo usuario
+    // Método agregar un nuevo usuario
     @PostMapping("/registrar")
     public String registrarUsario(User user,Model model){
         user  = userService.save(user);
         if(user != null){
-            System.out.println("se registro exitosamente");
+            System.out.println("Se registro exitosamente");
         }else{
             System.out.println("Ocurrio un error");
         }
@@ -63,8 +61,6 @@ public class UserController {
         System.out.println("id usuario: " + id);
         List<Rol> listaRol = rolService.listaRol();
         model.addAttribute("listRol",listaRol);
-        model.addAttribute("titulo", "Modificar usuarios");
         return "register";
     }
-
 }

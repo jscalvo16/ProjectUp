@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevo usuario</title>
+<head th:replace="plantilla/plantilla :: head">
 </head>
 <body>
-<h1 th:text="${titulo}"></h1>
-<form th:action="@{/registrar}" method="post" th:object="${user}">
-    <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}">
-    <label >Nombre</label>
-    <input type="text" th:field="${user.nombUsua}"><br>
-    <label >Apellido</label>
-    <input type="text" th:field="${user.apelUsua}" ><br>
-    <label >Tipo documento</label>
-    <select th:field="${user.tipoDoc}">
-        <option th:value="C.C">C.C</option>
-        <option th:value="T.I">T.I</option>
-    </select><br>
-    <label >Numero Documento</label>
-    <input type="text" th:field="${user.numbDocUsua}"><br>
-    <label >Fecha de nacimiento</label>
-    <input type="date" th:field="${user.fechNaci}"><br>
-    <label >Correo</label>
-    <input type="email" th:field="${user.corrUsua}"><br>
-    <label >contraseña</label>
-    <input type="password" th:field="${user.contraUsua}"><br>
-    <label >Estado</label>
-    <input type="checkbox" th:field="${user.estaUsua}"><br>
-    <label >Rol</label>
-    <select  th:field="${user.rol}" >
-        <option th:each="roles : ${listRol}" th:value="${roles.idRol}" th:text="${roles.tipoRol}">
-        </option>
-    </select><br>
-    <input type="submit" value="Enviar">
-</form>
+<section th:replace="plantilla/plantilla :: barra-lateral">
+</section>
+<section class="contenedor">
+    <h1>Registrar usuario</h1>
+    <form th:action="@{/registrar}" method="post" th:object="${user}">
+        <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}">
+        <label >Nombre</label>
+        <input type="text" th:field="${user.nombUsua}"><br>
+        <label >Apellido</label>
+        <input type="text" th:field="${user.apelUsua}" ><br>
+        <label >Tipo documento</label>
+        <select th:field="${user.tipoDoc}">
+            <option th:value="C.C">C.C</option>
+            <option th:value="T.I">T.I</option>
+        </select><br>
+        <label >Numero Documento</label>
+        <input type="text" th:field="${user.numbDocUsua}"><br>
+        <label >Fecha de nacimiento</label>
+        <input type="date" th:field="${user.fechNaci}"><br>
+        <label >Correo</label>
+        <input type="email" th:field="${user.corrUsua}"><br>
+        <label >contraseña</label>
+        <input type="password" th:field="${user.contraUsua}"><br>
+        <label >Estado</label>
+        <input type="checkbox" th:field="${user.estaUsua}"><br>
+        <label >Rol</label>
+        <select  th:field="${user.rol}" >
+            <option th:each="roles : ${listRol}" th:value="${roles.idRol}" th:text="${roles.tipoRol}">
+            </option>
+        </select><br>
+        <input type="submit" value="Enviar">
+    </form>
+</section>
+<script th:replace="plantilla/plantilla :: js-barra"></script>
 </body>
 </html>

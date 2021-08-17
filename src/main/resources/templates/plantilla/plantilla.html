@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/prueba.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="icon" type="image/png" th:href="@{img/naranja_sena.png}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>ProjectUp</title>
+</head>
+<body>
+<!-- Comienzo del menu -->
+<section th:fragment="barra-lateral">
+    <header>
+        <section>
+            <div class="sidebar">
+                <div class="logo-details">
+                    <div class="logo_name">Admin</div>
+                    <i class='bx bx-menu' id="btn"></i>
+                </div>
+                <ul class="nav-list">
+                    <li>
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Buscar">
+                        <span class="tooltip">Buscar</span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class='fas fa-folder-open'></i>
+                            <span class="links_name">Fichas</span>
+                        </a>
+                        <span class="tooltip">Fichas</span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class='fas fa-users'></i>
+                            <span class="links_name">Aprendices</span>
+                        </a>
+                        <span class="tooltip">Aprendices</span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class='fas fa-chalkboard-teacher'></i>
+                            <span class="links_name">Usuarios</span>
+                        </a>
+                        <span class="tooltip">Usuarios</span>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class='fas fa-user-shield'></i>
+                            <span class="links_name">Coordinadores</span>
+                        </a>
+                        <span class="tooltip">Coordinadores</span>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class='bx bx-cog'></i>
+                            <span class="links_name">Mi perfil</span>
+                        </a>
+                        <span class="tooltip">Mi perfil</span>
+                    </li>
+                    <li class="profile">
+                        <div class="profile-details">
+                            <img th:src="@{img/naranja_sena.png}" alt="Logo del SENA">
+                            <div class="name_job">
+                                <div class="name">Maicol Chong</div>
+                                <div class="job">Administrador</div>
+                            </div>
+                        </div>
+                        <a href="#"><i class='bx bx-log-out' id="log_out"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </header>
+</section>
+<!-- Fin del menú -->
+<script th:fragment="js-barra" th:src="@{js/script.js}"></script>
+</body>
+</html>
