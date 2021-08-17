@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Usuarios</title>
@@ -33,9 +33,10 @@
             <td>[[${user.corrUsua}]]</td>
             <td>
                 <span th:if="${user.estaUsua == true}">Activo</span>
-                <span th:if="${user.estaUsua == false}">Inhanctivo</span>
+                <span th:if="${user.estaUsua == false}">Inanctivo</span>
             </td>
             <td>[[${user.rol.tipoRol}]]</td>
+            <td><a th:href="@{'/usuario/editar/' + ${user.idUsua}}">Modificar</a></td>
         </tr>
     </tbody>
 </table>

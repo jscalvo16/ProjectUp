@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registro </title>
+    <title>Nuevo usuario</title>
 </head>
 <body>
-<h1>Registro Usuarios</h1>
+<h1 th:text="${titulo}"></h1>
 <form th:action="@{/registrar}" method="post" th:object="${user}">
+    <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}">
     <label >Nombre</label>
     <input type="text" th:field="${user.nombUsua}"><br>
     <label >Apellido</label>
     <input type="text" th:field="${user.apelUsua}" ><br>
     <label >Tipo documento</label>
-    <input type="text" th:field="${user.tipoDoc}"><br>
+    <select th:field="${user.tipoDoc}">
+        <option th:value="C.C">C.C</option>
+        <option th:value="T.I">T.I</option>
+    </select><br>
     <label >Numero Documento</label>
     <input type="text" th:field="${user.numbDocUsua}"><br>
     <label >Fecha de nacimiento</label>
