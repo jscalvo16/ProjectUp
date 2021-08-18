@@ -8,24 +8,25 @@
 <section class="contenedor">
     <h1>Registrar usuario</h1>
     <form th:action="@{/registrar}" method="post" th:object="${user}">
-        <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}">
+        <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}" required>
         <label >Nombre</label>
-        <input type="text" th:field="${user.nombUsua}"><br>
+        <input type="text" th:field="${user.nombUsua}" required><br>
+
         <label >Apellido</label>
-        <input type="text" th:field="${user.apelUsua}" ><br>
+        <input type="text" th:field="${user.apelUsua}" required><br>
         <label >Tipo documento</label>
         <select th:field="${user.tipoDoc}">
             <option th:value="C.C">C.C</option>
             <option th:value="T.I">T.I</option>
         </select><br>
         <label >Numero Documento</label>
-        <input type="text" th:field="${user.numbDocUsua}"><br>
+        <input type="text" th:field="${user.numbDocUsua}" required><br>
         <label >Fecha de nacimiento</label>
-        <input type="date" th:field="${user.fechNaci}"><br>
+        <input type="date" th:field="${user.fechNaci}" required><br>
         <label >Correo</label>
-        <input type="email" th:field="${user.corrUsua}"><br>
+        <input type="email" th:field="${user.corrUsua}" required><br>
         <label >contraseña</label>
-        <input type="password" th:field="${user.contraUsua}"><br>
+        <input type="password" th:field="${user.contraUsua}" required><br>
         <label >Estado</label>
         <input type="checkbox" th:field="${user.estaUsua}"><br>
         <label >Rol</label>
