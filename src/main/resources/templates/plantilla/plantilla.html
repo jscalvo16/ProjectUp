@@ -36,6 +36,9 @@
                             <span class="links_name">Fichas</span>
                         </a>
                         <span class="tooltip">Fichas</span>
+                        <ul id="muestra_fich" th:each="fichas : ${listaFichas}">
+                            <li > [[${fichas.numFicha}]]</li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#">
