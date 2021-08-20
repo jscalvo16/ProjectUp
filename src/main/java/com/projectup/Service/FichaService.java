@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FichaService {
@@ -13,5 +14,9 @@ public class FichaService {
 
     public List<Ficha> fichaList(){
         return (List<Ficha>) fichre.findAll();
+    }
+
+    public Optional<Ficha> fichaById(int id){
+        return fichre.findById(id);
     }
 }

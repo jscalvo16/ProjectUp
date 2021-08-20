@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <link rel="stylesheet" th:href="@{css/prueba.css}">
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/prueba.css}">
+    <link rel="stylesheet" th:href="@{../css/grupos/grupo.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="icon" type="image/png" th:href="@{img/naranja_sena.png}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +38,7 @@
                         </a>
                         <span class="tooltip">Fichas</span>
                         <ul id="muestra_fich" th:each="fichas : ${listaFichas}">
-                            <li > [[${fichas.numFicha}]]</li>
+                            <li ><a th:href="@{'/ficha/'+${fichas.idFicha}}"> [[${fichas.numFicha}]]</a> </li>
                         </ul>
                     </li>
                     <li>

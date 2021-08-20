@@ -1,0 +1,238 @@
+/*Estilos del exterior de la ventana modal*/
+.overlay {
+    background: rgba(0, 0, 0, .5);
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/*Estilos del interior de la ventana modal*/
+.popup {
+    background: #f8f8f8;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    padding: 30px;
+    text-align: center;
+    width: 29%;
+    transition: 1s ease all;
+    transform: scale(1);
+    overflow: hidden;
+}
+
+.modal-close{
+    transform: scale(0);
+}
+
+/*Estilos del icono X para cerrar la ventana modal*/
+.popup .btn-cerrar-popup {
+    font-size: 30px;
+    line-height: 5px;
+    display: block;
+    text-align: right;
+    color: #bbbbbb;
+    cursor: pointer;
+}
+
+.popup .btn-cerrar-popup:hover {
+    color: #fc4a1a;
+    cursor: pointer;
+}
+
+/*Estilos de los titulos*/
+.popup h3 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.popup h4 {
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+/*Estilos del formuraio*/
+.contenedor-inputs .grupo{
+    position: relative;
+    margin: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contenedor-inputs .grupo input{
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+    padding: 8px 8px 8px 4px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #bebed2;
+    transition: all .3s;
+}
+
+.contenedor-inputs .grupo textarea{
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+    resize: none;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    border: 2px solid #bebed2;
+    transition: all .3s;
+}
+
+.contenedor-inputs .grupo input:focus{
+    outline: none;
+}
+
+.contenedor-inputs .grupo textarea:focus{
+    outline: none;
+}
+
+.contenedor-inputs .grupo label{
+    font-size: 15px;
+    float: left;
+    margin-bottom: 25px;
+}
+
+.label1{
+    margin-left: -50%;
+    position: absolute;
+    top: 10px;
+    transition: 0.4s ease all;
+    pointer-events: none;
+}
+
+.contenedor-inputs .grupo input:focus~.label1,
+.contenedor-inputs .grupo input:valid~.label1{
+    top: -15px;
+    font-size: 14px;
+    color: #fc4a1a;
+}
+
+.contenedor-inputs .grupo textarea:focus~label,
+.contenedor-inputs .grupo input[type="file"]:focus~label{
+    color: #fc4a1a;
+}
+
+.contenedor-inputs .grupo .barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.contenedor-inputs .grupo .barra::before {
+    content: "";
+    height: 2px;
+    width: 0%;
+    margin-left: -50%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to left, #fc4a1a, #f7b733);
+    transition: 0.4s ease width;
+
+}
+
+.contenedor-inputs .grupo input:focus~.barra::before{
+    width: 100%;
+}
+
+.contenedor-inputs .grupo textarea:focus~.barra::before{
+    width: 100%;
+}
+
+select{
+    cursor: pointer;
+}
+
+.popup form .contenedor-inputs .option1 {
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
+    display: flex;
+    color: #5a5a5a;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .3s;
+    border-bottom: 2px solid #bebed2;
+    justify-content: space-evenly;
+}
+
+.popup form .contenedor-inputs .option2 {
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #5a5a5a;
+    resize: none;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .3s;
+    border-bottom: 2px solid #bebed2;
+    justify-content: space-evenly;
+    margin-left: 240px;
+    margin-top: -36px;
+}
+
+.popup form .contenedor-inputs .option3 {
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #5a5a5a;
+    resize: none;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .3s;
+    border-bottom: 2px solid #bebed2;
+}
+
+.popup form .contenedor-inputs .option4 {
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    resize: none;
+    color: #5a5a5a;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .3s;
+    border-bottom: 2px solid #bebed2;
+    margin-left: 240px;
+    margin-top: -36px;
+}
+
+.popup form .btn-submit {
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+    color: #fff;
+    background-color: #fc7323;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+.popup form .btn-submit:hover {
+    background-color: rgba(255, 127, 42, 0.9);
+}
