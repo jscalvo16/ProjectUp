@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="plantilla/plantilla :: head">
+    <meta charset="UTF-8">
+    <title>Integrantes</title>
+</head>
+<body th:object="${infoGrupo}">
+<section th:replace="plantilla/plantilla :: barra-lateral">
+
+</section>
+<section id="inicio">
+
+    <section class="proyecto contenedor">
+        <h1>[[${infoGrupo.nombreGrupo}]]</h1>
+    </section>
+    <section class="questions contenedor ">
+
+        <section class="textos-questions">
+
+            <h2>Explicación</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, nemo quia cupiditate saepe inventore id
+                neque aliquid vel aperiam, tempora ab quas, magnam qui recusandae delectus dolor. Nisi, fugit eos?
+            </p>
+            <button class="btn-abrir-popup" id="btn-abrir-popup">Modificar Grupo</button>
+        </section>
+
+        <section class="numbers">
+            <div class="number">
+                <h4>Alcance</h4>
+                <p>[[${infoGrupo.alcanGrupo}]]</p>
+            </div>
+            <br>
+            <div class="number">
+                <h4>Descripción</h4>
+                <p>[[${infoGrupo.descGrupo}]]</p>
+            </div>
+        </section>
+
+    </section>
+
+    <section class="contenedor1 services">
+        <img src="img/grupos/ilustracion3.svg" alt="Personas trabajando" data-aos="flip-up" data-aos-duration="3000">
+        <div class="box-skills" th:each="integrante : ${integrantes}">
+            <h4><i class="far fa-check-circle"></i>[[${integrante.nombUsua}]] </h4>
+        </div>
+    </section>
+
+    <!-- Sección de los entregables -->
+
+</section>
+<script th:replace="plantilla/plantilla::js-barra"></script>
+<script th:src="@{js/grupo.js}"></script>
+</body>
+</html>

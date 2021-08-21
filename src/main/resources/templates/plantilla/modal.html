@@ -1,88 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="esp" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="plantilla/plantilla :: head">
-
-
+<head>
+    <meta charset="UTF-8">
+    <title>Plantilla modal Grupos</title>
 </head>
-<body th:object="${infoFicha}">
+<body>
+<section th:fragment="modal-grupo">
+    <!--Formulario 1 (Ventana modal)-->
 
-
-<h1>[[${infoFicha.numFicha}]]</h1>
-<p>[[${infoFicha.etapaElectiva}]]</p>
-<p>[[${infoFicha.finEtapaElectiva}]]</p>
-<p>[[${infoFicha.jornadaFicha}]]</p>
-
-<!--Inicio de grupos de la ficha-->
-<section>
-    <header>
-        <div class="contenedor">
-            <section class="contenido-header">
-                <section class="textos-header">
-                    <h1>Grupos de proyecto</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, nemo quia cupiditate saepe
-                        inventore id neque aliquid vel aperiam, tempora ab quas, magnam qui recusandae delectus dolor.
-                        Nisi, fugit eos?</p>
-                    <button class="btn-abrir-popup" id="btn-abrir-popup">Crear Grupo</button>
-                </section>
-                <img src="img/grupos/grupo.svg" alt="Grupo de personas">
-            </section>
-        </div>
-    </header>
-    <section class="about-us" id="seccion2">
-        <div class="contenedor1">
-            <h1>Grupos</h1>
-
-            <div class="contenedor-articulo">
-                <th:block th:each="grupo : ${grupos}">
-
-                    <div class="articulo">
-
-                        <i class="fas fa-pen-fancy"></i>
-                        <h3>[[${grupo.nombreGrupo}]]</h3>
-                        <p>[[${grupo.descGrupo}]]
-                        </p>
-                        <a th:href="@{'/descripcion/' + ${grupo.idGrupo}}"> <strong> Ver grupo ---></strong></a>
-                    </div>
-                </th:block>
-            </div>
-        </div>
-
-    </section>
-</section>
-
-<footer>
-    <div class="partFooter">
-        <img src="img/grupos/naranja_sena.png" alt="Logo del SENA">
-    </div>
-    <div class="partFooter">
-        <h4>Servicios</h4>
-        <a href="#">Services 1</a>
-        <!--a[href="#"]{Services $}*3-->
-        <a href="#">Services 2</a>
-        <a href="#">Services 3</a>
-    </div>
-    <div class="partFooter">
-        <h4>Acerca de</h4>
-        <a href="#">About 1</a>
-        <a href="#">About 2</a>
-        <a href="#">About 3</a>
-    </div>
-    <div class="partFooter">
-        <h4>Redes sociales</h4>
-        <div class="social">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-youtube"></i>
-        </div>
-    </div>
-</footer>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="js/script.js"></script>
-
-<!-- Fin del resto de la página -->
-
-<section>
     <div class="overlay" id="overlay">
         <div class="popup modal-close" id="popup">
             <span class="btn-cerrar-popup" id="btn-cerrar-popup">&times;</span>
@@ -141,7 +66,7 @@
             </form>
         </div>
     </div>
+     <script th:src="@{js/modal.js}"></script>
 </section>
-
 </body>
 </html>
