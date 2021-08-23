@@ -19,64 +19,79 @@
 <section th:fragment="barra-lateral">
     <header>
         <section>
-            <div class="sidebar">
+            <div class="sidebar close">
                 <div class="logo-details">
-                    <div class="logo_name">Admin</div>
-                    <i class='bx bx-menu' id="btn"></i>
+                    <i class='bx bx-menu'></i>
+                    <span class="logo_name">Admin</span>
                 </div>
-                <ul class="nav-list">
-                    <li>
-                        <i class='bx bx-search'></i>
-                        <input type="text" placeholder="Buscar">
-                        <span class="tooltip">Buscar</span>
-                    </li>
+                <ul class="nav-links">
                     <li>
                         <a href="#">
-                            <i class='fas fa-folder-open'></i>
-                            <span class="links_name">Fichas</span>
+                            <i class='fas fa-users' ></i>
+                            <span class="link_name">Aprendices</span>
                         </a>
-                        <span class="tooltip">Fichas</span>
-                        <ul id="muestra_fich" th:each="fichas : ${listaFichas}">
-                            <li > [[${fichas.numFicha}]]</li>
+                        <ul class="sub-menu blank">
+                            <li><a class="link_name" href="#">Aprendices</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="iocn-link">
+                            <a href="#">
+                                <i class='fas fa-folder-open' ></i>
+                                <span class="link_name">Fichas</span>
+                            </a>
+                            <i class='bx bxs-chevron-down arrow' ></i>
+                        </div>
+                        <ul class="sub-menu">
+                            <li><a class="link_name" href="#">Fichas</a></li>
+                            <li><a href="#">2242753</a></li>
+                            <li><a href="#">151512185</a></li>
+                            <li><a href="#">1846549</a></li>
+                            <li><a href="#">1846549</a></li>
+                            <li><a href="#">7621654</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="iocn-link">
+                            <a href="#">
+                                <i class='fas fa-chalkboard-teacher' ></i>
+                                <span class="link_name">instructores</span>
+                            </a>
+                        </div>
+                        <ul class="sub-menu blank">
+                            <li><a class="link_name" href="#">Instructores</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#">
-                            <i class='fas fa-users'></i>
-                            <span class="links_name">Aprendices</span>
+                            <i class='fas fa-user-shield' ></i>
+                            <span class="link_name">Coordinadores</span>
                         </a>
-                        <span class="tooltip">Aprendices</span>
+                        <ul class="sub-menu blank">
+                            <li><a class="link_name" href="#">Coordinadores</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#">
-                            <i class='fas fa-chalkboard-teacher'></i>
-                            <span class="links_name">Usuarios</span>
+                            <i class='bx bx-cog' ></i>
+                            <span class="link_name">Mi perfil</span>
                         </a>
-                        <span class="tooltip">Usuarios</span>
+                        <ul class="sub-menu blank">
+                            <li><a class="link_name" href="#">Mi perfil</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class='fas fa-user-shield'></i>
-                            <span class="links_name">Coordinadores</span>
-                        </a>
-                        <span class="tooltip">Coordinadores</span>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class='bx bx-cog'></i>
-                            <span class="links_name">Mi perfil</span>
-                        </a>
-                        <span class="tooltip">Mi perfil</span>
-                    </li>
-                    <li class="profile">
                         <div class="profile-details">
-                            <img th:src="@{img/naranja_sena.png}" alt="Logo del SENA">
-                            <div class="name_job">
-                                <div class="name">Maicol Chong</div>
+                            <div class="profile-content">
+                                <img th:src="@{img/naranja_sena.png}" alt="profileImg">
+                            </div>
+                            <div class="name-job">
+                                <div class="profile_name">Maicol Chong</div>
                                 <div class="job">Administrador</div>
                             </div>
+                            <i class='bx bx-log-out' ></i>
                         </div>
-                        <a href="#"><i class='bx bx-log-out' id="log_out"></i></a>
                     </li>
                 </ul>
             </div>

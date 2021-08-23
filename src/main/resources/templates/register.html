@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="plantilla/plantilla :: head">
+<head>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/prueba.css}">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="icon" type="image/png" th:href="@{img/naranja_sena.png}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-<section th:replace="plantilla/plantilla :: barra-lateral">
+<section th:insert="plantilla/plantilla :: barra-lateral">
 </section>
-<section class="contenedor">
-    <h1>Registrar usuario</h1>
-    <form th:action="@{/registrar}" method="post" th:object="${user}">
-        <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}" required>
-        <label >Nombre</label>
-        <input type="text" th:field="${user.nombUsua}" required><br>
 
-        <label >Apellido</label>
-        <input type="text" th:field="${user.apelUsua}" required><br>
-        <label >Tipo documento</label>
-        <select th:field="${user.tipoDoc}">
-            <option th:value="C.C">C.C</option>
-            <option th:value="T.I">T.I</option>
-        </select><br>
-        <label >Numero Documento</label>
-        <input type="text" th:field="${user.numbDocUsua}" required><br>
-        <label >Fecha de nacimiento</label>
-        <input type="date" th:field="${user.fechNaci}" required><br>
-        <label >Correo</label>
-        <input type="email" th:field="${user.corrUsua}" required><br>
-        <label >contraseña</label>
-        <input type="password" th:field="${user.contraUsua}" required><br>
-        <label >Estado</label>
-        <input type="checkbox" th:field="${user.estaUsua}"><br>
-        <label >Rol</label>
-        <select  th:field="${user.rol}" >
-            <option th:each="roles : ${listRol}" th:value="${roles.idRol}" th:text="${roles.tipoRol}">
-            </option>
-        </select><br>
-        <input type="submit" value="Enviar">
-    </form>
+<section>
+    <div class="modal-wrap">
+        <span class="is-active"></span><span></span><span></span>
+        <div class="modal-bodies">
+            <div class="modal-body modal-body-step-1 is-showing">
+                <div class="title">Datos personales</div>
+                <div class="description">Ingrese los datos del usuario</div>
+                <form th:action="@{/registrar}" method="post" th:object="${user}">
+                    <input type="hidden" th:field="*{idUsua}" th:value="${user.idUsua}" required>
+                    <input type="text" placeholder="Nombre" th:field="${user.nombUsua}" required/>
+                    <input type="text" placeholder="Apellido" th:field="${user.apelUsua}" required/>
+                    <select name="select" th:field="${user.tipoDoc}">
+                        <option value="value1">Tipo de documento</option>
+                        <option th:value="C.C" selected>Cedula</option>
+                        <option th:value="T.I" selected>Tarjeta de identidad</option>
+                    </select>
+                    <br>
+                    <input type="text" placeholder="Numero de documento" th:field="${user.numbDocUsua}"/>
+                    <input id="date" type="date" th:field="${user.fechNaci}" required>
+                    <input type="email" placeholder="Correo electronico" th:field="${user.corrUsua}" required/>
+                    <input type="password" placeholder="Contraseña"  th:field="${user.contraUsua}" required/>
+                    <input type="checkbox" th:field="${user.estaUsua}" value="activo"> Activo/Inactivo<br>
+                    <br>
+                    <select  th:field="${user.rol}">
+                        <option th:each="roles : ${listRol}" th:value="${roles.idRol}" th:text="${roles.tipoRol}">
+                        </option>
+                    </select>
+                    <br>
+
+
+
+
+                    <div class="text-center">
+                        <input type="submit" value="enviar" class="xd">
+                    </div>
+                </form>
+
+
 </section>
-<script th:replace="plantilla/plantilla :: js-barra"></script>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script th:replace="plantilla/plantilla :: js-barra"></script>
 </body>
 </html>
