@@ -42,14 +42,8 @@
                             </a>
                             <i class='bx bxs-chevron-down arrow' ></i>
                         </div>
-                        <ul class="sub-menu">
-                            <li><a class="link_name" href="#">Fichas</a></li>
-                            <li><a href="#">2242753</a></li>
-                            <li><a href="#">151512185</a></li>
-                            <li><a href="#">1846549</a></li>
-                            <li><a href="#">1846549</a></li>
-                            <li><a href="#">7621654</a></li>
-
+                        <ul class="sub-menu" th:each="ficha : ${listaFichas}">
+                            <li><a>[[${ficha.numFicha}]]</a></li>
                         </ul>
                     </li>
                     <li>
