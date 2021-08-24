@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="esp" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="plantilla/plantilla :: head">
-
-
 </head>
 <body th:object="${infoFicha}">
-
+<!-- Plantilla del menú lateral -->
+<section th:replace="plantilla/plantilla :: barra-lateral">
+</section>
 
 <h1>[[${infoFicha.numFicha}]]</h1>
 <p>[[${infoFicha.etapaElectiva}]]</p>
@@ -24,7 +24,6 @@
                         Nisi, fugit eos?</p>
                     <button class="btn-abrir-popup" id="btn-abrir-popup">Crear Grupo</button>
                 </section>
-                <img src="img/grupos/grupo.svg" alt="Grupo de personas">
             </section>
         </div>
     </header>
@@ -49,99 +48,11 @@
 
     </section>
 </section>
-
-<footer>
-    <div class="partFooter">
-        <img src="img/grupos/naranja_sena.png" alt="Logo del SENA">
-    </div>
-    <div class="partFooter">
-        <h4>Servicios</h4>
-        <a href="#">Services 1</a>
-        <!--a[href="#"]{Services $}*3-->
-        <a href="#">Services 2</a>
-        <a href="#">Services 3</a>
-    </div>
-    <div class="partFooter">
-        <h4>Acerca de</h4>
-        <a href="#">About 1</a>
-        <a href="#">About 2</a>
-        <a href="#">About 3</a>
-    </div>
-    <div class="partFooter">
-        <h4>Redes sociales</h4>
-        <div class="social">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-youtube"></i>
-        </div>
-    </div>
-</footer>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="js/script.js"></script>
-
+<script th:replace="plantilla/plantilla :: js-barra"></script>
 <!-- Fin del resto de la página -->
 
-<section>
-    <div class="overlay" id="overlay">
-        <div class="popup modal-close" id="popup">
-            <span class="btn-cerrar-popup" id="btn-cerrar-popup">&times;</span>
-            <h3> Modificar grupo de proyecto</h3>
-            <form action="" method="post">
-                <div class="contenedor-inputs">
-                    <div class="grupo">
-                        <input type="text" name="nombreGrupo" autofocus required><span class="barra"></span>
-                        <label class="label1">Nombre del grupo</label>
-                    </div>
-                    <div class="grupo">
-                        <textarea></textarea><span class="barra"></span>
-                        <label>Descripción del proyecto</label>
-                    </div>
-                    <div class="grupo">
-                        <textarea></textarea><span class="barra"></span>
-                        <label>Alcance del proyecto</label>
-                    </div>
-                    <br>
-                    <br>
-                    <h4><strong>Integrantes</strong></h4>
-                    <select class="option1">
-                        <option selected value="0">Integrante 1</option>
-                        <option value="1"> Nicolas Rosero Correal</option>
-                        <option value="2"> Carlos Rico Romero</option>
-                        <option value="3"> Jhoan Esteban Rodriguez</option>
-                        <option value="4"> Jhoan Esteban Rodriguez</option>
-                    </select>
-
-                    <select class="option2">
-                        <option selected value="0">Integrante 2</option>
-                        <option value="1"> Karen Romero Martinez</option>
-                        <option value="2"> Liezth Moreno Aguirre</option>
-                        <option value="3"> Mario Ramirez Cordoba</option>
-                        <option value="4"> Andres Roa Gonzales</option>
-                    </select>
-
-                    <select class="option3">
-                        <option selected value="0">Integrante 3</option>
-                        <option value="1">Karen Romero Martinez</option>
-                        <option value="2"> Liezth Moreno Aguirre</option>
-                        <option value="3"> Miguel Angel Garcia Zambrano</option>
-                        <option value="4"> Juan Camilo Posada</option>
-                    </select>
-
-                    <select class="option4">
-                        <option selected value="0">Integrante 4</option>
-                        <option value="1"> Angie Lorena Riascos</option>
-                        <option value="2"> Alexander Lozano Riascos</option>
-                        <option value="3"> Sebastina Vega Lisarazo</option>
-                        <option value="4"> Miguel Angel Garcia Zambrano</option>
-                    </select>
-                </div>
-                <br>
-                <input type="submit" class="btn-submit">
-            </form>
-        </div>
-    </div>
-</section>
+<!-- Plantilla del formulario modal -->
+<!-- Aquí va el modal -->
 
 </body>
 </html>

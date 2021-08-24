@@ -11,30 +11,31 @@
     <div class="overlay" id="overlay">
         <div class="popup modal-close" id="popup">
             <span class="btn-cerrar-popup" id="btn-cerrar-popup">&times;</span>
-            <h3> Modificar grupo de proyecto</h3>
-            <form action="" method="post">
+            <h3> Crear grupo de proyecto</h3>
+            <form th:action="@{/creargrupo}" method="post" th:object="${grupoInfo}">
                 <div class="contenedor-inputs">
                     <div class="grupo">
-                        <input type="text" name="nombreGrupo" autofocus required><span class="barra"></span>
+                        <input type="text" th:field="${grupoInfo.nombreGrupo}" autofocus required><span class="barra"></span>
                         <label class="label1">Nombre del grupo</label>
                     </div>
                     <div class="grupo">
-                        <textarea></textarea><span class="barra"></span>
+                        <textarea th:field="${grupoInfo.descGrupo}"></textarea><span class="barra"></span>
                         <label>Descripción del proyecto</label>
                     </div>
                     <div class="grupo">
-                        <textarea></textarea><span class="barra"></span>
+                        <textarea th:field="${grupoInfo.alcanGrupo}"></textarea><span class="barra"></span>
                         <label>Alcance del proyecto</label>
                     </div>
                     <br>
                     <br>
                     <h4><strong>Integrantes</strong></h4>
-                    <select class="option1">
-                        <option selected value="0">Integrante 1</option>
-                        <option value="1"> Nicolas Rosero Correal</option>
-                        <option value="2"> Carlos Rico Romero</option>
-                        <option value="3"> Jhoan Esteban Rodriguez</option>
-                        <option value="4"> Jhoan Esteban Rodriguez</option>
+                    <select class="option1" th:field="${grupoInfo.userG}">
+                        <option th:value="ninguno">Integrante 1</option>
+                        <th:block th:each="user : ${sinGrupo}">
+                            <th:block th:if="${user.getGrupo() == null}">
+                                <option th:value="${user.idUsua}" th:text="${user.nombUsua} + ' ' + ${user.apelUsua}"></option>
+                            </th:block>
+                        </th:block>
                     </select>
 
                     <select class="option2">
@@ -66,7 +67,7 @@
             </form>
         </div>
     </div>
-     <script th:src="@{js/modal.js}"></script>
+     <script th:src="@{../js/modal.js}"></script>
 </section>
 </body>
 </html>

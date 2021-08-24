@@ -5,16 +5,16 @@
     <title>Integrantes</title>
 </head>
 <body th:object="${infoGrupo}">
+<!-- Plantilla del menú lateral -->
 <section th:replace="plantilla/plantilla :: barra-lateral">
-
 </section>
-<section id="inicio">
 
+<section id="inicio">
     <section class="proyecto contenedor">
         <h1>[[${infoGrupo.nombreGrupo}]]</h1>
     </section>
-    <section class="questions contenedor ">
 
+    <section class="questions contenedor ">
         <section class="textos-questions">
 
             <h2>Explicación</h2>
@@ -35,20 +35,19 @@
                 <p>[[${infoGrupo.descGrupo}]]</p>
             </div>
         </section>
-
     </section>
 
     <section class="contenedor1 services">
-        <img src="img/grupos/ilustracion3.svg" alt="Personas trabajando" data-aos="flip-up" data-aos-duration="3000">
         <div class="box-skills" th:each="integrante : ${integrantes}">
-            <h4><i class="far fa-check-circle"></i>[[${integrante.nombUsua}]] </h4>
+            <h4><i class="far fa-check-circle"></i> [[${integrante.nombUsua} + ' ' + ${integrante.apelUsua}]] </h4>
         </div>
     </section>
 
     <!-- Sección de los entregables -->
-
 </section>
 <script th:replace="plantilla/plantilla::js-barra"></script>
+<!-- Fin del resto de la página -->
+
 <script th:src="@{js/grupo.js}"></script>
 </body>
 </html>

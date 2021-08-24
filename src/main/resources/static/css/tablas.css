@@ -23,15 +23,6 @@
     border-top-right-radius: 10px;
 }
 
-.ficha{
-    text-decoration: none;
-    color: #383C3E;
-}
-
-.ficha:hover{
-    color: #fc7323;
-}
-
 .table tr:nth-child(even){
     background: #CFCFCF;
 }
