@@ -32,34 +32,45 @@
                     <select class="option1" th:field="${grupoInfo.userG}">
                         <option th:value="ninguno">Integrante 1</option>
                         <th:block th:each="user : ${sinGrupo}">
-                            <th:block th:if="${user.getGrupo() == null}">
-                                <option th:value="${user.idUsua}" th:text="${user.nombUsua} + ' ' + ${user.apelUsua}"></option>
+                            <th:block th:if="${user.grupo == null}">
+                                <th:block th:if="${user.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.idUsua}" th:text="${user.nombUsua} + ' ' + ${user.apelUsua}"></option>
+                                </th:block>
                             </th:block>
                         </th:block>
                     </select>
 
-                    <select class="option2">
-                        <option selected value="0">Integrante 2</option>
-                        <option value="1"> Karen Romero Martinez</option>
-                        <option value="2"> Liezth Moreno Aguirre</option>
-                        <option value="3"> Mario Ramirez Cordoba</option>
-                        <option value="4"> Andres Roa Gonzales</option>
+                    <select class="option2" th:field="${grupoInfo.userG}">
+                        <option th:value="ninguno">Integrante 2</option>
+                        <th:block th:each="user : ${sinGrupo}">
+                            <th:block th:if="${user.grupo == null}">
+                                <th:block th:if="${user.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.idUsua}" th:text="${user.nombUsua} + ' ' + ${user.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
                     </select>
 
-                    <select class="option3">
-                        <option selected value="0">Integrante 3</option>
-                        <option value="1">Karen Romero Martinez</option>
-                        <option value="2"> Liezth Moreno Aguirre</option>
-                        <option value="3"> Miguel Angel Garcia Zambrano</option>
-                        <option value="4"> Juan Camilo Posada</option>
+                    <select class="option3" th:field="${grupoInfo.userG}">
+                        <option th:value="ninguno">Integrante 3</option>
+                        <th:block th:each="user : ${sinGrupo}">
+                            <th:block th:if="${user.grupo == null}">
+                                <th:block th:if="${user.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.idUsua}" th:text="${user.nombUsua} + ' ' + ${user.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
                     </select>
 
-                    <select class="option4">
-                        <option selected value="0">Integrante 4</option>
-                        <option value="1"> Angie Lorena Riascos</option>
-                        <option value="2"> Alexander Lozano Riascos</option>
-                        <option value="3"> Sebastina Vega Lisarazo</option>
-                        <option value="4"> Miguel Angel Garcia Zambrano</option>
+                    <select class="option4" th:field="${grupoInfo.userG}">
+                        <option th:value="ninguno">Integrante 4</option>
+                        <th:block th:each="user : ${sinGrupo}">
+                            <th:block th:if="${user.grupo == null}">
+                                <th:block th:if="${user.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.idUsua}" th:text="${user.nombUsua} + ' ' + ${user.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
                     </select>
                 </div>
                 <br>

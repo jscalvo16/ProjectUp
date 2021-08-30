@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -36,13 +35,13 @@ public class GrupoController {
     }
 
     //Mostrar información dentro del modal
-    @PostMapping("/grupo/nuevo")
-    public String guardarGrupo(Grupo grupo, Model model){
+    @GetMapping("/nuevogrupo")
+    public String mostrarGrupo(Grupo grupo, Model model){
         System.out.println("Formulario para crear un nuevo grupo");
         model.addAttribute("grupoInfo", new Grupo());
         List<User> usersSinGrupo = userService.listAll();
         model.addAttribute("sinGrupo", usersSinGrupo);
-        return "plantilla/modal";
+        return "fichas";
     }
 
 
