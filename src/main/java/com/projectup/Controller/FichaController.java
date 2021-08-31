@@ -29,6 +29,7 @@ public class FichaController {
         Ficha ficha=fichser.fichaById(id).get();
         model.addAttribute("infoFicha",ficha);
         model.addAttribute("grupos",ficha.getListGrupos());
+        model.addAttribute("lista",ficha.getListaPivoteF());
         return "fichas";
     }
 }

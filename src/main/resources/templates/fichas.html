@@ -4,8 +4,6 @@
 </head>
 <body th:object="${infoFicha}">
 <!-- Plantilla del menú lateral -->
-<section th:replace="plantilla/plantilla :: barra-lateral">
-</section>
 
 <h1>[[${infoFicha.numFicha}]]</h1>
 <p>[[${infoFicha.etapaElectiva}]]</p>
@@ -47,6 +45,36 @@
         </div>
 
     </section>
+    <table>
+        <thead>
+        <tr>
+            <th:block th:each="list : ${lista}">
+                <th:block th:if="${list.userF.rol.tipoRol == 'Coordinador'}">
+                    <th colspan="2">Coordinador: [[${list.userF.nombUsua}]]</th>
+                </th:block>
+            </th:block>
+        </tr>
+        <tr colspan="2">
+            <th>Nombre y Apellidos</th>
+            <th>Correo</th>
+            <th>Tipo de documento</th>
+            <th>Numero de documento</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="list : ${lista}">
+            <tr >
+                <th:block th:if="${list.userF.rol.tipoRol == 'Aprendiz'}">
+                    <td th:text="${list.userF.nombUsua}+ ' ' +${list.userF.apelUsua}"></td>
+                    <td th:text="${list.userF.corrUsua}"></td>
+                    <td th:text="${list.userF.tipoDoc}"></td>
+                    <td th:text="${list.userF.numbDocUsua}"></td>
+                </th:block>
+            </tr>
+        </th:block>
+        </tbody>
+
+    </table>
 </section>
 <script th:replace="plantilla/plantilla :: js-barra"></script>
 <!-- Fin del resto de la página -->
