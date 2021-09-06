@@ -2,16 +2,17 @@ package com.projectup.Controller;
 
 
 import com.projectup.Service.GrupoService;
-import com.projectup.Service.UserService;
 import com.projectup.beans.Grupo;
 import com.projectup.beans.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -20,10 +21,6 @@ public class GrupoController {
 
     @Autowired
     private GrupoService grupoService;
-
-    @Autowired
-    private UserService userService;
-
 
     //Mostrar la informacion del grupo
     @GetMapping("/descripcion/{id}")
@@ -35,15 +32,21 @@ public class GrupoController {
         return "integrantes";
     }
 
-    //Mostrar información dentro del modal
-    @PostMapping("/grupo/nuevo")
-    public String guardarGrupo(Grupo grupo, Model model){
-        System.out.println("Formulario para crear un nuevo grupo");
-        model.addAttribute("grupoInfo", new Grupo());
-        List<User> usersSinGrupo = userService.listAll();
-        model.addAttribute("sinGrupo", usersSinGrupo);
-        return "plantilla/modal";
-    }
+    // Crear un grupo de proyecto
+    @PostMapping("/creargrupo")
+    public String mostrarGrupo(@Valid Grupo grupo, Errors errores, Model model){
+        if(errores.hasErrors()){
+            System.out.println("Validación realizada con exito");
+            return "fichas";
+        }
 
+        grupo = grupoService.guardarGrupo(grupo);
+        if(grupo != null){
+            System.out.println("Información del grupo guardada correctamente");
+        }else {
+            System.out.println("Error en el proceso de guardado");
+        }
+        return "fichas";
+    }
 
 }

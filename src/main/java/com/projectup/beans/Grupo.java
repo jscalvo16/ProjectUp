@@ -1,6 +1,8 @@
 package com.projectup.beans;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -12,6 +14,7 @@ public class Grupo {
     @Column(name = "IdGrupo")
     private int idGrupo;
 
+    @NotEmpty
     @Column(name = "NombGrupo")
     private String nombreGrupo;
 
@@ -31,6 +34,7 @@ public class Grupo {
     private List<Avance> listAvances;
 
     // Relación con la entidad User
+    @NotNull
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "grupoU")
     private List<User> userG;
 
