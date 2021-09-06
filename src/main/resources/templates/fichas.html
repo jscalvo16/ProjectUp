@@ -20,7 +20,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, nemo quia cupiditate saepe
                         inventore id neque aliquid vel aperiam, tempora ab quas, magnam qui recusandae delectus dolor.
                         Nisi, fugit eos?</p>
-                    <a th:href="@{'/nuevogrupo'}" class="btn-abrir-popup" id="btn-abrir-popup">Crear Grupo</a>
+                    <a class="btn-abrir-popup" id="btn-abrir-popup">Crear Grupo</a>
                 </section>
             </section>
         </div>
@@ -82,6 +82,85 @@
 <!-- Plantilla del formulario modal -->
 <!-- Aquí va el modal -->
 <section>
+    <!--Formulario 1 (Ventana modal)-->
+
+    <div class="overlay" id="overlay">
+        <div class="popup modal-close" id="popup">
+            <span class="btn-cerrar-popup" id="btn-cerrar-popup">&times;</span>
+            <h3> Crear grupo de proyecto</h3>
+            <form th:action="@{/creargrupo}" method="post" th:object="${grupoInfo}">
+                <div class="contenedor-inputs">
+                    <input type="hidden" th:field="${grupoInfo.ficha}">
+                    <div class="grupo">
+                        <input type="text" th:field="${grupoInfo.nombreGrupo}" autofocus><span class="barra"></span>
+                        <label class="label1">Nombre del grupo</label>
+                        <span th:if="${#fields.hasErrors('nombreGrupo')}" th:errors="*{nombreGrupo}"></span>
+                    </div>
+                    <div class="grupo">
+                        <textarea th:field="${grupoInfo.descGrupo}"></textarea><span class="barra"></span>
+                        <label>Descripción del proyecto</label>
+                    </div>
+                    <div class="grupo">
+                        <textarea th:field="${grupoInfo.alcanGrupo}"></textarea><span class="barra"></span>
+                        <label>Alcance del proyecto</label>
+                    </div>
+                    <br>
+                    <br>
+                    <h4><strong>Integrantes</strong></h4>
+                    <select class="option1" th:field="${grupoInfo.userG}">
+                        <option th:value="0">Integrante 1</option>
+                        <th:block th:each="user : ${lista}">
+                            <th:block th:if="${user.userF.grupo == null}">
+                                <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
+                    </select>
+                    <span th:if="${#fields.hasErrors('userG')}" th:errors="*{userG}"></span>
+
+                    <select class="option2" th:field="${grupoInfo.userG}">
+                        <option th:value="0">Integrante 2</option>
+                        <th:block th:each="user : ${lista}">
+                            <th:block th:if="${user.userF.grupo == null}">
+                                <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
+                    </select>
+                    <span th:if="${#fields.hasErrors('userG')}" th:errors="*{userG}"></span>
+
+                    <select class="option3" th:field="${grupoInfo.userG}">
+                        <option th:value="0">Integrante 3</option>
+                        <th:block th:each="user : ${lista}">
+                            <th:block th:if="${user.userF.grupo == null}">
+                                <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
+                    </select>
+                    <span th:if="${#fields.hasErrors('userG')}" th:errors="*{userG}"></span>
+
+                    <select class="option4" th:field="${grupoInfo.userG}">
+                        <option th:value="0">Integrante 4</option>
+                        <th:block th:each="user : ${lista}">
+                            <th:block th:if="${user.userF.grupo == null}">
+                                <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
+                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                </th:block>
+                            </th:block>
+                        </th:block>
+                    </select>
+                    <span th:if="${#fields.hasErrors('userG')}" th:errors="*{userG}"></span>
+                </div>
+                <br>
+                <input type="submit" class="btn-submit">
+            </form>
+        </div>
+    </div>
+    <script th:src="@{../js/modal.js}"></script>
 
 </section>
 
