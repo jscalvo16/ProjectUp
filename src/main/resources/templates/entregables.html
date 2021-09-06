@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="esp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Entregable</title>
+</head>
+<body>
+
+<form action="" th:object="${infoEntregable}">
+    <label> Titulo:
+        <input type="text" th:field="*{tituloEntre}">
+    </label>
+
+    <label> Trimestre:
+        <input type="text" th:field="*{trimEntre}">
+    </label>
+
+    <label> Descripción:
+        <input type="text" th:field="*{descEntre}">
+    </label>
+
+    <label> Fecha Inicio:
+        <input type="date" th:field="*{fechaInicio}">
+    </label>
+
+    <label> Fecha Fin:
+        <input type="date" th:field="*{fechaFin}">
+    </label>
+
+    <label> Archivo:
+        <input type="file" th:field="*{archivoEntre}">
+    </label>
+
+    <label> Instructor de seguimiento:
+        <input type="text" th:field="*{instSeg}">
+    </label>
+</form>
+
+</body>
+</html>
