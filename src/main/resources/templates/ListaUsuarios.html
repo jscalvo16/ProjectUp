@@ -1,49 +1,100 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="plantilla/plantilla :: head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/prueba.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="icon" type="image/png" th:href="@{img/naranja_sena.png}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,700'>
+    <link rel='stylesheet' href='https://cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css'>
+    <link rel='stylesheet' href='https://codepen.io/Mobius1/pen/BRVaVR.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css'>
+    <link rel='stylesheet' href='https://codepen.io/Mobius1/pen/BLXoYV.css'><link rel="stylesheet" href="../css/tablas.css">
 </head>
 <body>
-<section th:replace="plantilla/plantilla :: barra-lateral">
+<section th:insert="plantilla/plantilla :: barra-lateral">
 </section>
-<section class="contenedor">
-    <strong th:if="${mensaje}">[[${mensaje}]]</strong>
-    <h1>Lista Usuarios</h1>
-    <a th:href="@{/nuevo}">Registrar un usuario</a>
-    <div class="content-table">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Tipo Documento</th>
-                    <th>Numero de Documento</th>
-                    <th>Fecha de nacimiento</th>
-                    <th>Correo</th>
-                    <th>Estado</th>
-                    <th>Rol</th>
-                    <th colspan="2"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="user : ${listaUser}">
-                    <td>[[${user.nombUsua}]]</td>
-                    <td>[[${user.apelUsua}]]</td>
-                    <td>[[${user.tipoDoc}]]</td>
-                    <td>[[${user.numbDocUsua}]]</td>
-                    <td>[[${user.fechNaci}]]</td>
-                    <td>[[${user.corrUsua}]]</td>
-                    <td>
-                        <span th:if="${user.estaUsua == true}">Activo</span>
-                        <span th:if="${user.estaUsua == false}">Inanctivo</span>
-                    </td>
-                    <td>[[${user.rol.tipoRol}]]</td>
-                    <td><a th:href="@{'/usuario/editar/' + ${user.idUsua}}">Modificar</a></td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="form-group">
+                        <button type="button" class="bttn success main" id="init"><a th:href="@{/nuevo}">Registrar un usuario</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
-
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-block">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>TI</th>
+                            <th>NI</th>
+                            <th>Fecha de N</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                            <th>Rol</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user : ${listaUser}">
+                            <td>[[${user.nombUsua}]]</td>
+                            <td>[[${user.apelUsua}]]</td>
+                            <td>[[${user.tipoDoc}]]</td>
+                            <td>[[${user.numbDocUsua}]]</td>
+                            <td>[[${user.fechNaci}]]</td>
+                            <td>[[${user.corrUsua}]]</td>
+                            <td>
+                                <span th:if="${user.estaUsua == true}">Activo</span>
+                                <span th:if="${user.estaUsua == false}">Inanctivo</span>
+                            </td>
+                            <td>[[${user.rol.tipoRol}]]</td>
+                            <td><a th:href="@{'/usuario/editar/' + ${user.idUsua}}">Modificar</a></td>
+                        <tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="hide">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Visibilidad de la columna
+                    </div>
+                    <div class="card-block">
+                        <div class="form-group" id="columns"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/utils.js'></script>
+<script src='https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js'></script><script  th:src="@{js/tablas.js}"></script>
 <script th:replace="plantilla/plantilla :: js-barra"></script>
+
 </body>
 </html>

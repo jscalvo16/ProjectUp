@@ -4,11 +4,16 @@
 </head>
 <body th:object="${infoFicha}">
 <!-- Plantilla del menú lateral -->
+<section th:replace="plantilla/plantilla :: barra-lateral">
+</section>
 
-<h1>[[${infoFicha.numFicha}]]</h1>
-<p>[[${infoFicha.etapaElectiva}]]</p>
-<p>[[${infoFicha.finEtapaElectiva}]]</p>
-<p>[[${infoFicha.jornadaFicha}]]</p>
+<!-- Información de la ficha -->
+<section class="hd">
+    <h1>[[${infoFicha.numFicha}]]</h1>
+    <p><strong>Inicio de etapa lectiva:</strong> [[${infoFicha.etapaElectiva}]]</p>
+    <p><strong>Fin de etapa lectiva:</strong> [[${infoFicha.finEtapaElectiva}]]</p>
+    <p><strong>Jornada de la ficha:</strong> [[${infoFicha.jornadaFicha}]]</p>
+</section>
 
 <!--Inicio de grupos de la ficha-->
 <section>
@@ -43,38 +48,43 @@
                 </th:block>
             </div>
         </div>
-
     </section>
-    <table>
-        <thead>
-        <tr>
-            <th:block th:each="list : ${lista}">
-                <th:block th:if="${list.userF.rol.tipoRol == 'Coordinador'}">
-                    <th colspan="2">Coordinador: [[${list.userF.nombUsua}]]</th>
-                </th:block>
-            </th:block>
-        </tr>
-        <tr colspan="2">
-            <th>Nombre y Apellidos</th>
-            <th>Correo</th>
-            <th>Tipo de documento</th>
-            <th>Numero de documento</th>
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="list : ${lista}">
-            <tr >
-                <th:block th:if="${list.userF.rol.tipoRol == 'Aprendiz'}">
-                    <td th:text="${list.userF.nombUsua}+ ' ' +${list.userF.apelUsua}"></td>
-                    <td th:text="${list.userF.corrUsua}"></td>
-                    <td th:text="${list.userF.tipoDoc}"></td>
-                    <td th:text="${list.userF.numbDocUsua}"></td>
+
+    <!-- Usuarios relacionados a la ficha -->
+    <section class="tablaUsers">
+        <table class="tb-g">
+            <thead>
+            <tr>
+                <th:block th:each="list : ${lista}">
+                    <th:block th:if="${list.userF.rol.tipoRol == 'Coordinador'}">
+                        <th colspan="2">Coordinador: [[${list.userF.nombUsua}]]</th>
+                    </th:block>
+                    <th:block th:if="${list.userF.rol.tipoRol == 'Instructor'}">
+                        <th>Instructores: [[${list.userF.nombUsua}]]</th>
+                    </th:block>
                 </th:block>
             </tr>
-        </th:block>
-        </tbody>
-
-    </table>
+            <tr colspan="2">
+                <th>Nombre y Apellidos</th>
+                <th>Correo</th>
+                <th>Tipo de documento</th>
+                <th>Numero de documento</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="list : ${lista}">
+                <tr>
+                    <th:block th:if="${list.userF.rol.tipoRol == 'Aprendiz'}">
+                        <td th:text="${list.userF.nombUsua}+ ' ' +${list.userF.apelUsua}"></td>
+                        <td th:text="${list.userF.corrUsua}"></td>
+                        <td class="td" th:text="${list.userF.tipoDoc}"></td>
+                        <td th:text="${list.userF.numbDocUsua}"></td>
+                    </th:block>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </section>
 </section>
 <script th:replace="plantilla/plantilla :: js-barra"></script>
 <!-- Fin del resto de la página -->
@@ -112,7 +122,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -124,7 +135,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -136,7 +148,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -148,7 +161,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -163,6 +177,9 @@
     <script th:src="@{../js/modal.js}"></script>
 
 </section>
+<!-- Plantilla JS para la modal -->
+<script th:replace="plantilla/plantilla :: js-barra"></script>
+
 
 </body>
 </html>
