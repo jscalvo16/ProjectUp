@@ -1,6 +1,9 @@
 package com.projectup.Controller;
 
+import com.projectup.Service.FaseService;
 import com.projectup.Service.FichaService;
+import com.projectup.beans.Entregable;
+import com.projectup.beans.Fase;
 import com.projectup.beans.Ficha;
 import com.projectup.beans.Grupo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ public class FichaController {
 
     @Autowired
     private FichaService fichser;
+
+    @Autowired
+    private FaseService faseService;
 
     // Mostrar el listado de fichas
     @GetMapping("/fichas")
@@ -42,6 +48,11 @@ public class FichaController {
 
         // Mostrar información para crear un grupo de proyecto
         model.addAttribute("grupoInfo", new Grupo());
+
+        //Mostrar informacion para crear un entregable
+        model.addAttribute("infoEntregable",new Entregable());
+        List<Fase>listaFase=faseService.listaFase();
+        model.addAttribute("listaFase",listaFase);
         return "fichas";
     }
 }

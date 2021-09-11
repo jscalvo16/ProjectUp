@@ -63,7 +63,7 @@
         </thead>
         <tbody>
         <th:block th:each="list : ${lista}">
-            <tr >
+            <tr>
                 <th:block th:if="${list.userF.rol.tipoRol == 'Aprendiz'}">
                     <td th:text="${list.userF.nombUsua}+ ' ' +${list.userF.apelUsua}"></td>
                     <td th:text="${list.userF.corrUsua}"></td>
@@ -112,7 +112,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -124,7 +125,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -136,7 +138,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -148,7 +151,8 @@
                         <th:block th:each="user : ${lista}">
                             <th:block th:if="${user.userF.grupo == null}">
                                 <th:block th:if="${user.userF.rol.tipoRol == 'Aprendiz'}">
-                                    <option th:value="${user.userF.idUsua}" th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
+                                    <option th:value="${user.userF.idUsua}"
+                                            th:text="${user.userF.nombUsua} + ' ' + ${user.userF.apelUsua}"></option>
                                 </th:block>
                             </th:block>
                         </th:block>
@@ -164,5 +168,80 @@
 
 </section>
 
+
+<section>
+    <!--Modal para formualario de entregables-->
+    <div class="overlay" id="overlayentre">
+        <div class="popup modal-close" id="popupentre">
+            <span class="btn-cerrar-popup" id="btn-cerrar-popupentre">&times;</span>
+            <h3> Crear entregable</h3>
+            <form th:action="@{/crearentregable}" method="post" th:object="${infoEntregable}">
+                <div class="contenedor-inputs">
+                    <div class="grupo">
+                        <input type="text" th:field="*{tituloEntre}" autofocus required><span class="barra"></span>
+                        <label class="label1">Titulo del entregable</label>
+                    </div>
+                    <div class="grupo">
+                        <h4><strong>Trimestre</strong></h4>
+                        <select class="trimestre" th:field="*{trimEntre}">
+                            <option th:value="Trimestre I">Trimestre I</option>
+                            <option th:value="Trimestre II">Trimestre II</option>
+                            <option th:value="Trimestre III">Trimestre III</option>
+                            <option th:value="Trimestre IV">Trimestre IV</option>
+                            <option th:value="Trimestre V">Trimestre V</option>
+                            <option th:value="Trimestre VI">Trimestre VI</option>
+                            <option th:value="Trimestre VII">Trimestre VII</option>
+                        </select>
+                    </div>
+                    <div class="grupo">
+                        <textarea th:field="*{descEntre}"></textarea><span class="barra"></span>
+                        <label>Descripcion del entregable</label>
+                    </div>
+                    <div class="grupo">
+                        <input type="date" th:field="*{fechaInicio}" required><span class="barra"></span>
+                        <label class="label1">Fecha de inicio</label>
+                    </div>
+                    <div class="grupo">
+                        <input type="date" th:field="*{fechaFin}" required><span class="barra"></span>
+                        <label class="label1">Fecha de finalización</label>
+                    </div>
+                    <div class="grupo">
+                        <input type="file" th:field="*{archivoEntre}" required><span class="barra"></span>
+                        <label class="label1">Archivo</label>
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div class="grupo">
+                        <h4><strong>Fases</strong></h4>
+                        <select class="fases" th:field="*{fase}">
+                            <th:block th:each="fases : ${listaFase}">
+
+                                <option th:value="${fases.idFase}" th:text="${fases.nomFase}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+
+                    <div class="grupo">
+                        <h4><strong>Instructores</strong></h4>
+                        <select class="instructores" th:field="*{instSeg}">
+                            <th:block th:each="listaInstructores : ${lista}">
+
+                                <th:block th:if="${listaInstructores.userF.rol.tipoRol == 'Instructor'}">
+                                    <option th:value="${listaInstructores.userF.idUsua}"
+                                            th:text="${listaInstructores.userF.nombUsua} + ' ' + ${listaInstructores.userF.apelUsua}"></option>
+                                </th:block>
+
+                            </th:block>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <input type="submit" class="btn-submit">
+            </form>
+        </div>
+    </div>
+</section>
 </body>
 </html>
