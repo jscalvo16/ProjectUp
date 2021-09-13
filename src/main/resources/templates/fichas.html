@@ -21,6 +21,7 @@
                         inventore id neque aliquid vel aperiam, tempora ab quas, magnam qui recusandae delectus dolor.
                         Nisi, fugit eos?</p>
                     <a class="btn-abrir-popup" id="btn-abrir-popup">Crear Grupo</a>
+                    <a class="btn-abrir-popup-entre" id="btn-abrir-popupEntre">Crear Entregable</a>
                 </section>
             </section>
         </div>
@@ -42,6 +43,7 @@
                     </div>
                 </th:block>
             </div>
+
         </div>
 
     </section>
@@ -164,66 +166,66 @@
             </form>
         </div>
     </div>
-    <script th:src="@{../js/modal.js}"></script>
+    <!-- Script para la modal de grupos -->
+
 
 </section>
 
 
-<section>
+<section class="modalEntregables">
     <!--Modal para formualario de entregables-->
-    <div class="overlay" id="overlayentre">
-        <div class="popup modal-close" id="popupentre">
-            <span class="btn-cerrar-popup" id="btn-cerrar-popupentre">&times;</span>
+    <div class="modalEntre">
+        <div class="contenidoModalEntre modal-close-entre">
+            <span class="btn-cerrar-popup-entre">&times;</span>
             <h3> Crear entregable</h3>
             <form th:action="@{/crearentregable}" method="post" th:object="${infoEntregable}">
                 <div class="contenedor-inputs">
-                    <div class="grupo">
-                        <input type="text" th:field="*{tituloEntre}" autofocus required><span class="barra"></span>
-                        <label class="label1">Titulo del entregable</label>
-                    </div>
-                    <div class="grupo">
-                        <h4><strong>Trimestre</strong></h4>
+                    <div class="caja1">
+                        <div class="grupo">
+                            <input type="text" th:field="*{tituloEntre}" autofocus required><span class="barra"></span>
+                            <label class="label1">Titulo del entregable</label>
+                        </div>
+
+                        <!-- Select de los trimestres -->
                         <select class="trimestre" th:field="*{trimEntre}">
-                            <option th:value="Trimestre I">Trimestre I</option>
-                            <option th:value="Trimestre II">Trimestre II</option>
-                            <option th:value="Trimestre III">Trimestre III</option>
-                            <option th:value="Trimestre IV">Trimestre IV</option>
-                            <option th:value="Trimestre V">Trimestre V</option>
-                            <option th:value="Trimestre VI">Trimestre VI</option>
-                            <option th:value="Trimestre VII">Trimestre VII</option>
+                            <option th:value="Trimestre_I">Trimestre I</option>
+                            <option th:value="Trimestre_II">Trimestre II</option>
+                            <option th:value="Trimestre_III">Trimestre III</option>
+                            <option th:value="Trimestre_IV">Trimestre IV</option>
+                            <option th:value="Trimestre_V">Trimestre V</option>
+                            <option th:value="Trimestre_VI">Trimestre VI</option>
+                            <option th:value="Trimestre_VII">Trimestre VII</option>
                         </select>
-                    </div>
-                    <div class="grupo">
-                        <textarea th:field="*{descEntre}"></textarea><span class="barra"></span>
-                        <label>Descripcion del entregable</label>
-                    </div>
-                    <div class="grupo">
-                        <input type="date" th:field="*{fechaInicio}" required><span class="barra"></span>
-                        <label class="label1">Fecha de inicio</label>
-                    </div>
-                    <div class="grupo">
-                        <input type="date" th:field="*{fechaFin}" required><span class="barra"></span>
-                        <label class="label1">Fecha de finalización</label>
-                    </div>
-                    <div class="grupo">
-                        <input type="file" th:field="*{archivoEntre}" required><span class="barra"></span>
-                        <label class="label1">Archivo</label>
+
+
+                        <div class="grupo">
+                            <textarea th:field="*{descEntre}"></textarea><span class="barra"></span>
+                            <label>Descripcion del entregable</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="date" th:field="*{fechaInicio}" required><span class="barra"></span>
+                            <label class="label">Fecha de inicio</label>
+                        </div>
                     </div>
 
-                    <br>
-                    <br>
+                    <div class="caja2">
+                        <div class="grupo">
+                            <input type="date" th:field="*{fechaFin}" required><span class="barra"></span>
+                            <label class="labelRaro">Fecha de finalización</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="file" th:field="*{archivoEntre}" required><span class="barra"></span>
+                        </div>
 
-                    <div class="grupo">
+                        <!-- Select de las fases -->
                         <h4><strong>Fases</strong></h4>
                         <select class="fases" th:field="*{fase}">
                             <th:block th:each="fases : ${listaFase}">
-
                                 <option th:value="${fases.idFase}" th:text="${fases.nomFase}"></option>
                             </th:block>
                         </select>
-                    </div>
 
-                    <div class="grupo">
+                        <!-- Select de los instructores -->
                         <h4><strong>Instructores</strong></h4>
                         <select class="instructores" th:field="*{instSeg}">
                             <th:block th:each="listaInstructores : ${lista}">
@@ -236,6 +238,7 @@
                             </th:block>
                         </select>
                     </div>
+
                 </div>
                 <br>
                 <input type="submit" class="btn-submit">
@@ -243,5 +246,7 @@
         </div>
     </div>
 </section>
+<!-- Script modal para crear un entregable -->
+<script th:src="@{../js/modalEntre.js}"></script>
 </body>
 </html>
