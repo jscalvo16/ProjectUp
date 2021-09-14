@@ -19,4 +19,8 @@ public class FichaService {
     public Optional<Ficha> fichaById(int id){
         return fichre.findById(id);
     }
+
+    public Ficha guardarfich(Ficha ficha){
+        return fichre.save(ficha);
+    }
 }

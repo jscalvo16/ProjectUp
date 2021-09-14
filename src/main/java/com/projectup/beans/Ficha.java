@@ -19,10 +19,10 @@ public class Ficha {
     private int numFicha;
 
     @Column(name = "InicEtapElec")
-    private Date etapaElectiva;
+    private String etapaElectiva;
 
     @Column(name = "FinEtapElec")
-    private Date finEtapaElectiva;
+    private String finEtapaElectiva;
 
     @Column(name = "JornFicha")
     private String jornadaFicha;
@@ -51,19 +51,19 @@ public class Ficha {
         this.numFicha = numFicha;
     }
 
-    public Date getEtapaElectiva() {
+    public String getEtapaElectiva() {
         return etapaElectiva;
     }
 
-    public void setEtapaElectiva(Date etapaElectiva) {
+    public void setEtapaElectiva(String etapaElectiva) {
         this.etapaElectiva = etapaElectiva;
     }
 
-    public Date getFinEtapaElectiva() {
+    public String getFinEtapaElectiva() {
         return finEtapaElectiva;
     }
 
-    public void setFinEtapaElectiva(Date finEtapaElectiva) {
+    public void setFinEtapaElectiva(String finEtapaElectiva) {
         this.finEtapaElectiva = finEtapaElectiva;
     }
 

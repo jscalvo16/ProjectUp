@@ -6,8 +6,10 @@ import com.projectup.beans.Grupo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -43,6 +45,23 @@ public class FichaController {
         // Mostrar información para crear un grupo de proyecto
         model.addAttribute("grupoInfo", new Grupo());
         return "fichas";
+    }
+    @GetMapping("/crearfich")
+    public String MostrarFich(Ficha ficha, Model model){
+        model.addAttribute("listado",ficha.getListaPivoteF());
+        model.addAttribute("ficha", new Ficha());
+        System.out.println("interfaz para crear fichas");
+        return "CrearFicha";
+    }
+    @PostMapping("/registrarfich")
+    public String crearFich(Ficha ficha, Model model, BindingResult res){
+        ficha = fichser.guardarfich(ficha);
+        if (res.hasErrors()){
+            System.out.println("Algo courrio !!!");
+            return "CrearFicha";
+        }
+        System.out.println("Se registro e forma exitosa !!!");
+        return "redirect:fichas";
     }
 }
 

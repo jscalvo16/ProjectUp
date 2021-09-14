@@ -34,7 +34,7 @@ public class UserController {
 
     // Vista para agregar un usuario
     @GetMapping("/nuevo")
-    public String mostrarRegister(User user, RedirectAttributes re, Model model){
+    public String mostrarRegister(User user, Model model){
         model.addAttribute("user",new User());
         System.out.println("Estas en el registro de usuarios");
         List<Rol> listaRol = rolService.listaRol();
