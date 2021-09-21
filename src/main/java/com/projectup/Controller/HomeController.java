@@ -8,8 +8,14 @@ public class HomeController {
 
     @GetMapping("/inicio")
     public String goHome() {
-        System.out.println("pagina de inicio");
+        System.out.println("Pagina de inicio");
         return "index";
+    }
+
+    @GetMapping("/login")
+    public String goLogin(){
+        System.out.println("Pagina de login");
+        return "login";
     }
 }
 
