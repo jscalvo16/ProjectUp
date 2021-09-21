@@ -1,5 +1,7 @@
 package com.projectup.beans;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -22,9 +24,11 @@ public class Entregable {
     @Column(name = "DescEntre")
     private String descEntre;
 
-    @Column(name = "FechInEntre")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "FechIniEntre")
     private Date fechaInicio;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "FechFin")
     private Date fechaFin;
 

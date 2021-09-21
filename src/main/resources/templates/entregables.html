@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="esp" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="plantilla/plantilla :: head">
+
     <meta charset="UTF-8">
     <title>Entregable</title>
 </head>
 <body>
 
-<form action="" th:object="${infoEntregable}">
-    <label> Titulo:
-        <input type="text" th:field="*{tituloEntre}">
-    </label>
+<section class="contenedor">
+    <h1>Lista De entregables</h1>
+    <a href="">Registrar un entregable</a>
+    <div class="content-table">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Trimeste</th>
+                <th>Descripción</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de fin</th>
+                <th>Archivo</th>
+                <th>Fase</th>
+                <th>Instructor de seguimiento</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entregable : ${listaEntregable}">
+                <td>[[${entregable.tituloEntre}]]</td>
+                <td>[[${entregable.trimEntre}]]</td>
+                <td>[[${entregable.descEntre}]]</td>
+                <td>[[${entregable.fechaInicio}]]</td>
+                <td>[[${entregable.fechaFin}]]</td>
+                <td>[[${entregable.archivoEntre}]]</td>
+                <td>[[${entregable.fase.nomFase}]]</td>
+                <td>[[${entregable.InstSeg}]]</td>
 
-    <label> Trimestre:
-        <input type="text" th:field="*{trimEntre}">
-    </label>
+                <td><a th:href="@{'entregabla/modificar/' + ${entregable.idEntre}}">Modificar</a>
 
-    <label> Descripción:
-        <input type="text" th:field="*{descEntre}">
-    </label>
+                </td>
+                <td><a>Eliminar</a></td>
+            </tr>
+            </tbody>
+        </table>
 
-    <label> Fecha Inicio:
-        <input type="date" th:field="*{fechaInicio}">
-    </label>
-
-    <label> Fecha Fin:
-        <input type="date" th:field="*{fechaFin}">
-    </label>
-
-    <label> Archivo:
-        <input type="file" th:field="*{archivoEntre}">
-    </label>
-
-    <label> Instructor de seguimiento:
-        <input type="text" th:field="*{instSeg}">
-    </label>
-</form>
+    </div>
+</section>
 
 </body>
 </html>

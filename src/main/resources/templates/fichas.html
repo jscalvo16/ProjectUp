@@ -214,7 +214,7 @@
                             <label class="labelRaro">Fecha de finalización</label>
                         </div>
                         <div class="grupo">
-                            <input type="file" th:field="*{archivoEntre}" required><span class="barra"></span>
+                            <input type="file" th:field="*{archivoEntre}" ><span class="barra"></span>
                         </div>
 
                         <!-- Select de las fases -->
@@ -231,7 +231,7 @@
                             <th:block th:each="listaInstructores : ${lista}">
 
                                 <th:block th:if="${listaInstructores.userF.rol.tipoRol == 'Instructor'}">
-                                    <option th:value="${listaInstructores.userF.idUsua}"
+                                    <option th:value="${listaInstructores.userF.nombUsua}+ ' ' + ${listaInstructores.userF.apelUsua}"
                                             th:text="${listaInstructores.userF.nombUsua} + ' ' + ${listaInstructores.userF.apelUsua}"></option>
                                 </th:block>
 
