@@ -3,29 +3,25 @@
 <head th:insert="plantilla/plantilla :: head">
 </head>
 <body>
-    <h1>Creacion de ficha</h1>
-    <form th:action="@{/registrarfich}" method="post" th:object="${ficha}">
-        <input type="hidden" th:field="*{idFicha}" th:value="${ficha.idFicha}" >
-        <label for="numb">Numero de Ficha</label><br>
-        <input type="number" th:field="${ficha.numFicha}" placeholder="Ingresa el numero de ficha" id="numb"><br>
-        <label for="inicio">Inicio Etapa Electiva</label><br>
-        <input type="date" th:field="${ficha.etapaElectiva}" id="inicio"><br>
-        <label for="fin">Fin Etapa Electiva</label><br>
-        <input type="date" th:field="${ficha.finEtapaElectiva}" id="fin"><br>
-        <label for="">Jornada</label>
-        <select name="" id="" th:field="${ficha.jornadaFicha}">
-            <option th:value="Diurna" selected>Jornada Diurna</option>
-            <option th:value="Mixta" >Jornada Mixta</option>
-            <option th:value="Nocturna">Jornada Nocturna</option>
-        </select><br>
-        <label>Seleccionar instructor de seguimiento</label>
-        <select th:field="${ficha.listaPivoteF}">
-            <th:block th:each="us : ${listado}">
-                <th:block th:if="${us.userF.rol.tipoRol == 'Instructor'}">
-                    <option th:value="${us.userF.idUsua}"> [[${us.userF.nombUsua}]]</option>
-                </th:block>
-            </th:block>
-        </select>
-        <input type="submit" value="Guardar">
-    </form>
+<h1>Creacion de ficha</h1>
+<form th:action="@{/registrarfich}" method="post" th:object="${ficha}">
+    <input type="hidden" th:field="*{idFicha}" th:value="${ficha.idFicha}">
+    <label for="numb">Numero de Ficha</label><br>
+    <input type="number" th:field="${ficha.numFicha}" placeholder="Ingresa el numero de ficha" id="numb"><br>
+    <label for="inicio">Inicio Etapa Electiva</label><br>
+    <input type="date" th:field="${ficha.etapaElectiva}" id="inicio"><br>
+    <label for="fin">Fin Etapa Electiva</label><br>
+    <input type="date" th:field="${ficha.finEtapaElectiva}" id="fin"><br>
+    <label for="">Jornada</label>
+    <select name="" id="" th:field="${ficha.jornadaFicha}">
+        <option th:value="Diurna" selected>Jornada Diurna</option>
+        <option th:value="Mixta">Jornada Mixta</option>
+        <option th:value="Nocturna">Jornada Nocturna</option>
+    </select><br>
+    <label>Seleccionar instructor de seguimiento</label>
+    <select th:each="us : ${listado}">
+        <option th:value="${us.userF.idUsua}" th:text="${us.userF.nombUsua}"></option>
+    </select>
+    <input type="submit" value="Guardar">
+</form>
 </body>

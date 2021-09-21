@@ -57,7 +57,7 @@ public class FichaController {
     public String crearFich(Ficha ficha, Model model, BindingResult res){
         ficha = fichser.guardarfich(ficha);
         if (res.hasErrors()){
-            System.out.println("Algo courrio !!!");
+            System.out.println("Algo ocurrio !!!");
             return "CrearFicha";
         }
         System.out.println("Se registro e forma exitosa !!!");
